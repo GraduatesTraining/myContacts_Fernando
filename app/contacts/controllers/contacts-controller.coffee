@@ -10,12 +10,13 @@
 class ContactsCtrl
   constructor: ($firebaseArray) ->
     @ctrlName = 'ContactsCtrl'
+    @showForm = false
   showEditForm: (contact) ->
     alert ""
   removeContact: (contact) ->
     alert ""
   showAddForm: ->
-    alert "Creating new contact"
+    @showForm = !@showForm
 
 ContactsCtrl.$inject = ["$firebaseArray"]
 

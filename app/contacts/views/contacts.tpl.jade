@@ -9,7 +9,7 @@
         td Email
         td Actions
       tbody
-        tr(ng-repeat="contact in contacts")
+        tr(ng-repeat="contact in contactsCtrl.all_contacts")
           td {{contact.name}}
           td {{contact.company}}
           td {{contact.email}}
@@ -19,3 +19,6 @@
   .large-2.small-12.columns
     a.button.large(ng-if="!contactsCtrl.showForm" ng-click="contactsCtrl.showAddForm()") Add Contact
     a.button.large.alert(ng-if="contactsCtrl.showForm" ng-click="contactsCtrl.showAddForm()") Close
+.row
+  .large-12.columns
+    a.button.large.warning( ng-click="contactsCtrl.getContacts()") Refresh

@@ -1,0 +1,26 @@
+doctype html
+html(lang='en' data-ng-app='myContacts')
+  head
+    title myContacts
+    meta(name='viewport' content='width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes')
+    |<!-- inject:head:js -->
+    |<!-- endinject -->
+    |<!-- inject:html -->
+    |<!-- endinject -->
+    |<!-- bower:css -->
+    |<!-- endbower -->
+    |<!-- inject:css -->
+    |<!-- endinject -->
+  body
+
+    .container
+      .row
+        .large-12.columns
+        h1 myContacts
+        hr
+      
+      div(ui-view)
+    |<!-- bower:js -->
+    |<!-- endbower -->
+    |<!-- inject:js -->
+    |<!-- endinject -->

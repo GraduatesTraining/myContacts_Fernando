@@ -1,0 +1,20 @@
+.row
+  .large-10.small-12.columns
+    contactsForm
+    h3 Your contacts
+    table#contactsTable
+      thead
+        td Name
+        td Company
+        td Email
+        td Actions
+      tbody
+        tr(ng-repeat="contact in contacts")
+          td {{contact.name}}
+          td {{contact.company}}
+          td {{contact.email}}
+          td 
+            a#actionButtons.button.tiny(ng-click="contactsCtrl.showEditForm(contact)") Edit          
+            a#actionButtons.button.tiny.alert(ng-click="contactsCtrl.removeContact(contact)") Delete
+  .large-2.small-12.columns
+    a.button.large(ng-click="contactsCtrl.showAddForm()") +

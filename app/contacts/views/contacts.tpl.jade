@@ -9,16 +9,16 @@
         td Email
         td Actions
       tbody
-        tr(ng-repeat="contact in contactsCtrl.all_contacts")
+        tr(ng-repeat=" (contact_key, contact) in contactsCtrl.all_contacts")
           td {{contact.name}}
           td {{contact.company}}
           td {{contact.email}}
           td 
-            a#actionButtons.button.tiny(ng-click="contactsCtrl.showEditForm(contact)") Edit          
-            a#actionButtons.button.tiny.alert(ng-click="contactsCtrl.removeContact(contact)") Delete
+            a#actionButtons.button.tiny(ng-click="contactsCtrl.showEditForm(contact_key)") Edit          
+            a#actionButtons.button.tiny.alert(ng-click="contactsCtrl.removeContact(contact_key)") Delete
   .large-2.small-12.columns
     a.button.large(ng-if="!contactsCtrl.showForm" ng-click="contactsCtrl.showAddForm()") Add Contact
     a.button.large.alert(ng-if="contactsCtrl.showForm" ng-click="contactsCtrl.showAddForm()") Close
-.row
-  .large-12.columns
-    a.button.large.warning( ng-click="contactsCtrl.getContacts()") Refresh
+// .row
+//   .large-12.columns
+//     a.button.large.warning(ng-click="contactsCtrl.getContacts()") Refresh

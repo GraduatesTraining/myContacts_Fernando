@@ -12,7 +12,7 @@ class ContactsCtrl
 
   all_contacts: {}
   
-  newContact: {
+  new_contact: {
     name: undefined
     email: undefined
     company: undefined
@@ -25,24 +25,48 @@ class ContactsCtrl
     zip: undefined
   }
   
+  updateKey: undefined
+  
   constructor: (@ContactsDataService) ->
     @ctrlName = 'ContactsCtrl'
     @getContacts()
-  showEditForm: (contact) ->
-    alert ""
-  removeContact: (contact) ->
-    alert ""
-  showAddForm: ->
+  showEditForm: (key) ->
+    @ContactsDataService.getContact(key)
+    .then (data) =>
+      @showAddForm(true)
+      @updateKey = key
+      @new_contact = data
+    , (error) ->
+      console.error "ContactsCtrl > deleteContact"
+      console.error "#{error.status} #{error.statusText}"
+  removeContact: (key) ->
+    console.log "Deleting contact with id: #{key}"
+    @ContactsDataService.deleteContact(key)
+    .then (data) =>
+      @getContacts()
+    , (error) ->
+      console.error "ContactsCtrl > deleteContact"
+      console.error "#{error.status} #{error.statusText}"
+  showAddForm: (edit = false) ->
+    @edit = edit
     @showForm = !@showForm
   addFormSubmit: ->
     console.log "Adding contact...."
     @ContactsDataService.createContact(@new_contact)
     .then (data) =>
-      console.log data
       @getContacts()
       @showAddForm()
     , (error) ->
       console.error "ContactsCtrl > addFormSubmit"
+      console.error "#{error.status} #{error.statusText}"
+  editFormSubmit: () ->
+    console.log "Updating contact...."
+    @ContactsDataService.updateContact(@updateKey, @new_contact)
+    .then (data) =>
+      @getContacts()
+      @showAddForm()
+    , (error) ->
+      console.error "ContactsCtrl > editFormSubmit"
       console.error "#{error.status} #{error.statusText}"
   getContacts: ->
     console.log "Getting contacts...."

@@ -76,7 +76,7 @@ class ContactsCtrl
     , (error) ->
       console.error "ContactsCtrl > deleteContact"
       console.error "#{error.status} #{error.statusText}"
-  openDeleteModal: =>
+  openDeleteModal: (key) =>
     modalInstance = @$modal.open {
       templateUrl: 'contacts/views/delete-modal.tpl.html'
       controller: 'DeleteModalCtrl'
@@ -84,8 +84,8 @@ class ContactsCtrl
     }
     
     modalInstance.result
-    .then (modal_result) ->
-      console.log modal_result
+    .then (modal_result) =>
+      if modal_result then @removeContact key
     , ->
       console.log "Modal dismissed at: #{new Date()}"
 

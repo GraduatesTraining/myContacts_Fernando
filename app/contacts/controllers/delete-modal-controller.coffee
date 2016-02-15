@@ -8,19 +8,15 @@
 
 ###
 class DeleteModalCtrl
-  @$inject = ['$modalInstance']
+  @$inject = ['$scope','$modalInstance']
 
-  constructor: (@$modalInstance) ->
+  constructor: (@$scope, @$modalInstance) ->
     @ctrlName = 'DeleteModalCtrl'
     console.log @$modalInstance
-  ok: ->
-    # @$modalInstance.close(true)
-    alert "OK"
-    return
-  cancel: ->
-    # @$modalInstance.dismiss(false)
-    alert "cancel"
-    return
+    @$scope.ok = =>
+      @$modalInstance.close true
+    @$scope.cancel = =>
+      @$modalInstance.dismiss false
 
 angular
   .module('contacts')

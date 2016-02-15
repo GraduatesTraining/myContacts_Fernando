@@ -1,6 +1,6 @@
-.large-12.columns(ng-controller="DeleteModalCtrl as deletemodalctrl")
+.large-12.columns
   h3 Delete contact
   p Are you sure you want to delete the contact?
-  button.button.secondary(ng-click="deletemodalctrl.cancel()") Cancel
-  button.button(ng-click="deletemodalctrl.ok()") OK
-  a.close-reveal-modal(ng-click="deletemodalctrl.cancel()") &#215;
+  button.button.secondary(ng-click="cancel()") Cancel
+  button.button(ng-click="ok()") OK
+  a.close-reveal-modal(ng-click="cancel()") &#215;

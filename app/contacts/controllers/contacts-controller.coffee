@@ -8,7 +8,7 @@
 
 ###
 class ContactsCtrl
-  @$inject = ['ContactsDataService']
+  @$inject = ['ContactsDataService','$modal']
 
   all_contacts: {}
   
@@ -27,9 +27,12 @@ class ContactsCtrl
   
   updateKey: undefined
   
-  constructor: (@ContactsDataService) ->
+  constructor: (@ContactsDataService, @$modal) ->
     @ctrlName = 'ContactsCtrl'
     @getContacts()
+  showAddForm: (edit = false) ->
+    @edit = edit
+    @showForm = !@showForm
   showEditForm: (key) ->
     @ContactsDataService.getContact(key)
     .then (data) =>
@@ -39,17 +42,6 @@ class ContactsCtrl
     , (error) ->
       console.error "ContactsCtrl > deleteContact"
       console.error "#{error.status} #{error.statusText}"
-  removeContact: (key) ->
-    console.log "Deleting contact with id: #{key}"
-    @ContactsDataService.deleteContact(key)
-    .then (data) =>
-      @getContacts()
-    , (error) ->
-      console.error "ContactsCtrl > deleteContact"
-      console.error "#{error.status} #{error.statusText}"
-  showAddForm: (edit = false) ->
-    @edit = edit
-    @showForm = !@showForm
   addFormSubmit: ->
     console.log "Adding contact...."
     @ContactsDataService.createContact(@new_contact)
@@ -76,6 +68,26 @@ class ContactsCtrl
     , (error) ->
       console.error "ContactsCtrl > getContacts"
       console.error "#{error.status} #{error.statusText}"
+  removeContact: (key) ->
+    console.log "Deleting contact with id: #{key}"
+    @ContactsDataService.deleteContact(key)
+    .then (data) =>
+      @getContacts()
+    , (error) ->
+      console.error "ContactsCtrl > deleteContact"
+      console.error "#{error.status} #{error.statusText}"
+  openDeleteModal: =>
+    modalInstance = @$modal.open {
+      templateUrl: 'contacts/views/delete-modal.tpl.html'
+      controller: 'DeleteModalCtrl'
+      controllerAs: 'deletemodalctrl'
+    }
+    
+    modalInstance.result
+    .then (modal_result) ->
+      console.log modal_result
+    , ->
+      console.log "Modal dismissed at: #{new Date()}"
 
 
 angular

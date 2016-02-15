@@ -15,7 +15,7 @@
           td {{contact.email}}
           td 
             a#actionButtons.button.tiny(ng-click="contactsCtrl.showEditForm(contact_key)") Edit          
-            a#actionButtons.button.tiny.alert(ng-click="contactsCtrl.removeContact(contact_key)") Delete
+            a#actionButtons.button.tiny.alert(ng-click="contactsCtrl.openDeleteModal()") Delete
   .large-2.small-12.columns
     a.button.large(ng-if="!contactsCtrl.showForm" ng-click="contactsCtrl.showAddForm()") Add Contact
     a.button.large.alert(ng-if="contactsCtrl.showForm" ng-click="contactsCtrl.showAddForm()") Close

@@ -8,11 +8,10 @@
 
 ###
 class DeleteModalCtrl
-  @$inject = ['$modalInstance']
+  @$inject = []
 
-  constructor: (@$modalInstance) ->
+  constructor: () ->
     @ctrlName = 'DeleteModalCtrl'
-    console.log @$modalInstance
   ok: ->
     # @$modalInstance.close(true)
     alert "OK"

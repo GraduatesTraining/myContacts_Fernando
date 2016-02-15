@@ -3,35 +3,39 @@ form
     .row
       .large-6.columns
         label Name:
-          input(type="text" ng-model="name" placeholder="Name" required)
+          input(type="text" ng-model="contactsCtrl.new_contact.name" placeholder="Name" required)
       .large-6.columns
         label Email:
-          input(type="email" ng-model="email" placeholder="Email")
+          input(type="email" ng-model="contactsCtrl.new_contact.email" placeholder="Email")
     .row
       .large-6.columns
         label Company:
-          input(type="text" ng-model="company" placeholder="Company")
+          input(type="text" ng-model="contactsCtrl.new_contact.company" placeholder="Company")
       .large-6.columns
         label Work Phone:
-          input(type="text" ng-model="work_phone" placeholder="Work Phone")
+          input(type="text" ng-model="contactsCtrl.new_contact.work_phone" placeholder="Work Phone")
     .row
       .large-6.columns
         label Mobile Phone:
-          input(type="text" ng-model="mobile_phone" placeholder="Mobile Phone")
+          input(type="text" ng-model="contactsCtrl.new_contact.mobile_phone" placeholder="Mobile Phone")
       .large-6.columns
         label Home Phone:
-          input(type="text" ng-model="home_phone" placeholder="Home Phone")
+          input(type="text" ng-model="contactsCtrl.new_contact.home_phone" placeholder="Home Phone")
     .row
       .large-6.columns
         label Street Address:
-          input(type="text" ng-model="street" placeholder="Street")
+          input(type="text" ng-model="contactsCtrl.new_contact.street" placeholder="Street")
       .large-6.columns
         label City:
-          input(type="text" ng-model="city" placeholder="City")
+          input(type="text" ng-model="contactsCtrl.new_contact.city" placeholder="City")
     .row
       .large-6.columns
         label State:
-          input(type="text" ng-model="state" placeholder="State")
+          input(type="text" ng-model="contactsCtrl.new_contact.state" placeholder="State")
       .large-6.columns
         label Zip:
-          input(type="text" ng-model="zip" placeholder="Zip")
+          input(type="text" ng-model="contactsCtrl.new_contact.zip" placeholder="Zip")
+    .row
+      .large-6.columns
+        a.button(ng-click="contactsCtrl.addFormSubmit()" ng-if="!contactsCtrl.edit") Add new contact
+        a.button(ng-click="contactsCtrl.editFormSubmit()" ng-if="contactsCtrl.edit") Update contact

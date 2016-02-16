@@ -13,16 +13,22 @@ class ContactsCtrl
   all_contacts: {}
   
   new_contact: {
-    name: undefined
-    email: undefined
-    company: undefined
-    work_phone: undefined
-    mobile_phone: undefined
-    home_phone: undefined
-    street: undefined
-    city: undefined
-    state: undefined
-    zip: undefined
+    personalInfo: {
+      name: undefined
+      email: undefined
+      company: undefined
+    }
+    telephone: {
+      work_phone: undefined
+      mobile_phone: undefined
+      home_phone: undefined
+    }
+    address: {
+      street: undefined
+      city: undefined
+      state: undefined
+      zip: undefined
+    }
   }
   
   updateKey: undefined

@@ -10,7 +10,9 @@
 class ContactsCtrl
   @$inject = ['ContactsDataService','$modal']
 
-  all_contacts: {}
+  # Model for all contacts, a new contact
+  # and a key to identify a contact
+  all_contacts: []
   
   new_contact: {
     personalInfo: {
@@ -30,15 +32,36 @@ class ContactsCtrl
       zip: undefined
     }
   }
-  
+
   updateKey: undefined
+
+  # Variables for ordering and filtering the contacts list
+  sortBy: 'personalInfo.name'
+  sortOrder: false
+  searchField: ''
   
+  # Variable for showing/hiding contact details
+  showIndexDetails: -1
+
+  # Constructor method of the class
   constructor: (@ContactsDataService, @$modal) ->
     @ctrlName = 'ContactsCtrl'
     @getContacts()
+  
+  # Method to show or hide contact details
+  showDetails: (index) ->
+    if @showIndexDetails is index
+      @showIndexDetails = -1
+    else
+      @showIndexDetails = index
+  
+  # Method to show or hide the add/edit form
   showAddForm: (edit = false) ->
     @edit = edit
+
     @showForm = !@showForm
+
+  # Method to retrieve the data of the contact to edit and show it
   showEditForm: (key) ->
     @ContactsDataService.getContact(key)
     .then (data) =>
@@ -48,6 +71,8 @@ class ContactsCtrl
     , (error) ->
       console.error "ContactsCtrl > deleteContact"
       console.error "#{error.status} #{error.statusText}"
+
+  # Method to add contacts to the DataBase
   addFormSubmit: ->
     console.log "Adding contact...."
     @ContactsDataService.createContact(@new_contact)
@@ -57,6 +82,8 @@ class ContactsCtrl
     , (error) ->
       console.error "ContactsCtrl > addFormSubmit"
       console.error "#{error.status} #{error.statusText}"
+
+  # Method to update a contact from the DataBase
   editFormSubmit: () ->
     console.log "Updating contact...."
     @ContactsDataService.updateContact(@updateKey, @new_contact)
@@ -66,14 +93,20 @@ class ContactsCtrl
     , (error) ->
       console.error "ContactsCtrl > editFormSubmit"
       console.error "#{error.status} #{error.statusText}"
+
+  # Method that retrieves the contacts from the DataBase
   getContacts: ->
     console.log "Getting contacts...."
+    @all_contacts = []
     @ContactsDataService.getContacts()
     .then (data) =>
-      @all_contacts = data
+      for e,v of data
+        @all_contacts.push v
     , (error) ->
       console.error "ContactsCtrl > getContacts"
       console.error "#{error.status} #{error.statusText}"
+
+  # Method to delete a contact from the DataBase
   removeContact: (key) ->
     console.log "Deleting contact with id: #{key}"
     @ContactsDataService.deleteContact(key)
@@ -82,6 +115,8 @@ class ContactsCtrl
     , (error) ->
       console.error "ContactsCtrl > deleteContact"
       console.error "#{error.status} #{error.statusText}"
+
+  # Method to open an instantiate the deletion modal
   openDeleteModal: (key) ->
     modalInstance = @$modal.open {
       controller: 'DeleteModalCtrl as deletemodalctrl'

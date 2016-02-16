@@ -22,16 +22,6 @@ class ContactsForm
       scope: false
       templateUrl: 'contacts/directives/contacts-form-directive.tpl.html'
       replace: false
-      
-      # ### Using the module controller ###
-
-      ### Defining a new controller or not, thats the question??????
-      controllerAs: 'contactsForm'
-      controller: ->
-        vm = @
-        vm.name = 'contactsForm'
-      ###
-      
       link: (scope, element, attrs) ->
         ###jshint unused:false ###
         ###eslint "no-unused-vars": [2, {"args": "none"}]###

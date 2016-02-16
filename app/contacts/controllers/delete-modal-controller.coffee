@@ -8,9 +8,9 @@
 
 ###
 class DeleteModalCtrl
-  @$inject = ['$scope','$modalInstance']
+  @$inject = ['$modalInstance']
 
-  constructor: (@$scope, @$modalInstance) ->
+  constructor: (@$modalInstance) ->
     @ctrlName = 'DeleteModalCtrl'
   ok: ->
     @$modalInstance.close true

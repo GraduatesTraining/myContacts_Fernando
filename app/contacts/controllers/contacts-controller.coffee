@@ -76,11 +76,10 @@ class ContactsCtrl
     , (error) ->
       console.error "ContactsCtrl > deleteContact"
       console.error "#{error.status} #{error.statusText}"
-  openDeleteModal: (key) =>
+  openDeleteModal: (key) ->
     modalInstance = @$modal.open {
+      controller: 'DeleteModalCtrl as deletemodalctrl'
       templateUrl: 'contacts/views/delete-modal.tpl.html'
-      controller: 'DeleteModalCtrl'
-      controllerAs: 'deletemodalctrl'
     }
     
     modalInstance.result

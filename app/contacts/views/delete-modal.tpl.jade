@@ -1,6 +1,12 @@
 .large-12.columns
-  h3 Delete contact
-  p Are you sure you want to delete the contact?
-  button.button.secondary(ng-click="cancel()") Cancel
-  button.button(ng-click="ok()") OK
-  a.close-reveal-modal(ng-click="cancel()") &#215;
+  .modal-header
+    h3.modal-title Delete contact
+  .modal-body
+    p This action #[b(style="color: red;") CANNOT] be undone. This will permanently delete the contact and all data associated to it.
+    br
+    p Please type in 'DELETE' to confirm.
+    input(type="text" ng-model="deletemodalctrl.delete_confirmation")
+  .modal-footer
+    button.button.secondary(ng-click="deletemodalctrl.cancel()") Cancel
+    button.button(ng-click="deletemodalctrl.ok()" ng-disabled="deletemodalctrl.delete_confirmation !== 'DELETE'") OK
+    a.close-reveal-modal(ng-click="deletemodalctrl.cancel()") &#215;

@@ -12,11 +12,10 @@ class DeleteModalCtrl
 
   constructor: (@$scope, @$modalInstance) ->
     @ctrlName = 'DeleteModalCtrl'
-    console.log @$modalInstance
-    @$scope.ok = =>
-      @$modalInstance.close true
-    @$scope.cancel = =>
-      @$modalInstance.dismiss false
+  ok: ->
+    @$modalInstance.close true
+  cancel: ->
+    @$modalInstance.dismiss false
 
 angular
   .module('contacts')

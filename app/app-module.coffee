@@ -9,6 +9,6 @@ angular
   .module 'myContacts', [
     'ui.router',
     'mm.foundation',
-    'contacts'
-
+    'contacts',
+    'login'
   ]

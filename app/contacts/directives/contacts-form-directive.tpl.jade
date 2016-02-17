@@ -1,4 +1,4 @@
-form
+form(name="contactsInputForm")
     h3 Add Contact
     .row
       .large-6.columns
@@ -37,5 +37,5 @@ form
           input(type="text" ng-model="contactsCtrl.new_contact.address.zip" placeholder="Zip")
     .row
       .large-6.columns
-        a.button(ng-click="contactsCtrl.addFormSubmit()" ng-if="!contactsCtrl.edit") Add new contact
-        a.button(ng-click="contactsCtrl.editFormSubmit()" ng-if="contactsCtrl.edit") Update contact
+        button(ng-click="contactsInputForm.$valid && contactsCtrl.addFormSubmit()" ng-if="!contactsCtrl.edit") Add new contact
+        button(ng-click="contactsInputForm.$valid && contactsCtrl.editFormSubmit()" ng-if="contactsCtrl.edit") Update contact

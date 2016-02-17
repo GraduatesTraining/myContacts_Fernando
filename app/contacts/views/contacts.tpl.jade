@@ -23,7 +23,7 @@
             span.fa.fa-caret-down(ng-show="contactsCtrl.sortBy == 'personalInfo.company' && !contactsCtrl.sortOrder")
             span.fa.fa-caret-up(ng-show="contactsCtrl.sortBy == 'personalInfo.company' && contactsCtrl.sortOrder")
           td Email
-          td(width="25%") Actions
+          td(width="20%") Actions
         tbody
           tr.contactInfo(ng-repeat-start="contact in contactsCtrl.all_contacts|orderBy:contactsCtrl.sortBy:contactsCtrl.sortOrder|filter:contactsCtrl.searchField")
             td(ng-click="contactsCtrl.showDetails($index)")

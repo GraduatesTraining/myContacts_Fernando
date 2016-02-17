@@ -58,7 +58,7 @@ class ContactsCtrl
   # Method to show or hide the add/edit form
   showAddForm: (edit = false) ->
     @edit = edit
-
+    @new_contact = {}
     @showForm = !@showForm
 
   # Method to retrieve the data of the contact to edit and show it

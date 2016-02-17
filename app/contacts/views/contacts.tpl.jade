@@ -1,55 +1,57 @@
 .row
   .large-10.small-12.columns
-    contacts-form(ng-show="contactsCtrl.showForm")
-    h3 Your contacts
-    form
-      .row.collapse.prefix-radius
-        .small-1.columns
-          span.prefix
-            i.fa.fa-search
-        .small-11.columns
-          input.search-bar(type="text" placeholder="Search your contact" ng-model="contactsCtrl.searchField")
-    table.table.table-bordered.table-striped.table-hover#contactsTable
-      thead
-        td(width="1%")
-        td
-          a(href="#" ng-click="contactsCtrl.sortBy = 'personalInfo.name'; contactsCtrl.sortOrder = !contactsCtrl.sortOrder") Name
-          span.fa.fa-caret-down(ng-show="contactsCtrl.sortBy == 'personalInfo.name' && !contactsCtrl.sortOrder")
-          span.fa.fa-caret-up(ng-show="contactsCtrl.sortBy == 'personalInfo.name' && contactsCtrl.sortOrder")
-        td
-          a(href="#" ng-click="contactsCtrl.sortBy = 'personalInfo.company'; contactsCtrl.sortOrder = !contactsCtrl.sortOrder") Company
-          span.fa.fa-caret-down(ng-show="contactsCtrl.sortBy == 'personalInfo.company' && !contactsCtrl.sortOrder")
-          span.fa.fa-caret-up(ng-show="contactsCtrl.sortBy == 'personalInfo.company' && contactsCtrl.sortOrder")
-        td Email
-        td(width="25%") Actions
-      tbody
-        tr.contactInfo(ng-repeat-start="contact in contactsCtrl.all_contacts|orderBy:contactsCtrl.sortBy:contactsCtrl.sortOrder|filter:contactsCtrl.searchField" ng-click="contactsCtrl.showDetails($index)")
+    div(ng-show="contactsCtrl.showForm")
+      contacts-form
+    div(ng-hide="contactsCtrl.showForm")
+      h3 Your contacts
+      form
+        .row.collapse.prefix-radius
+          .small-1.columns
+            span.prefix
+              i.fa.fa-search
+          .small-11.columns
+            input.search-bar(type="text" placeholder="Search your contact" ng-model="contactsCtrl.searchField")
+      table.table.table-bordered.table-striped.table-hover#contactsTable
+        thead
+          td(width="1%")
           td
-            span.fa.fa-chevron-right(ng-if="contactsCtrl.showIndexDetails != $index")
-            span.fa.fa-chevron-down(ng-if="contactsCtrl.showIndexDetails == $index")
-          td {{contact.personalInfo.name}}
-          td {{contact.personalInfo.company}}
-          td {{contact.personalInfo.email}}
+            a(ng-click="contactsCtrl.sortBy = 'personalInfo.name'; contactsCtrl.sortOrder = !contactsCtrl.sortOrder") Name
+            span.fa.fa-caret-down(ng-show="contactsCtrl.sortBy == 'personalInfo.name' && !contactsCtrl.sortOrder")
+            span.fa.fa-caret-up(ng-show="contactsCtrl.sortBy == 'personalInfo.name' && contactsCtrl.sortOrder")
           td
-            a#actionButtons.button.tiny(ng-click="contactsCtrl.showEditForm(contact.id)") Edit
-            a#actionButtons.button.tiny.alert(ng-click="contactsCtrl.openDeleteModal(contact.id)") Delete
+            a(ng-click="contactsCtrl.sortBy = 'personalInfo.company'; contactsCtrl.sortOrder = !contactsCtrl.sortOrder") Company
+            span.fa.fa-caret-down(ng-show="contactsCtrl.sortBy == 'personalInfo.company' && !contactsCtrl.sortOrder")
+            span.fa.fa-caret-up(ng-show="contactsCtrl.sortBy == 'personalInfo.company' && contactsCtrl.sortOrder")
+          td Email
+          td(width="25%") Actions
+        tbody
+          tr.contactInfo(ng-repeat-start="contact in contactsCtrl.all_contacts|orderBy:contactsCtrl.sortBy:contactsCtrl.sortOrder|filter:contactsCtrl.searchField")
+            td(ng-click="contactsCtrl.showDetails($index)")
+              span.fa.fa-chevron-right(ng-if="contactsCtrl.showIndexDetails != $index")
+              span.fa.fa-chevron-down(ng-if="contactsCtrl.showIndexDetails == $index")
+            td(ng-click="contactsCtrl.showDetails($index)") {{contact.personalInfo.name}}
+            td(ng-click="contactsCtrl.showDetails($index)") {{contact.personalInfo.company}}
+            td(ng-click="contactsCtrl.showDetails($index)") {{contact.personalInfo.email}}
+            td
+              a#actionButtons.button.tiny(href="#" ng-click="contactsCtrl.showEditForm(contact.id)") Edit
+              a#actionButtons.button.tiny.alert(href="#" ng-click="contactsCtrl.openDeleteModal(contact.id)") Delete
 
-        tr(ng-repeat-end ng-if="contactsCtrl.showIndexDetails == $index")
-          td(colspan="4")
-            .panel.contactDetails
-              h3 {{contact.personalInfo.name}}
-              ul
-                li #[b Company]: {{contact.personalInfo.company}}
-                li #[b Email Address]: {{contact.personalInfo.email}}
-                div(ng-if="contact.telephone != undefined")
-                  h5 Phone Numbers
-                  li #[b Work]: {{contact.telephone.work_phone}}
-                  li #[b Mobile]: {{contact.telephone.mobile_phone}}
-                  li #[b Home]: {{contact.telephone.home_phone}}
-                div(ng-if="contact.address != undefined")
-                  h5 Location Info
-                  li {{contact.address.street}}
-                  li {{contact.address.city}}, {{contact.address.state}} {{contact.address.zip}}
+          tr(ng-repeat-end ng-if="contactsCtrl.showIndexDetails == $index")
+            td(colspan="4")
+              .panel.contactDetails
+                h3 {{contact.personalInfo.name}}
+                ul
+                  li #[b Company]: {{contact.personalInfo.company}}
+                  li #[b Email Address]: {{contact.personalInfo.email}}
+                  div(ng-if="contact.telephone != undefined")
+                    h5 Phone Numbers
+                    li #[b Work]: {{contact.telephone.work_phone}}
+                    li #[b Mobile]: {{contact.telephone.mobile_phone}}
+                    li #[b Home]: {{contact.telephone.home_phone}}
+                  div(ng-if="contact.address != undefined")
+                    h5 Location Info
+                    li {{contact.address.street}}
+                    li {{contact.address.city}}, {{contact.address.state}} {{contact.address.zip}}
   .large-2.small-12.columns
     a.button.large(ng-if="!contactsCtrl.showForm" ng-click="contactsCtrl.showAddForm()") Add Contact
     a.button.large.alert(ng-if="contactsCtrl.showForm" ng-click="contactsCtrl.showAddForm()") Close

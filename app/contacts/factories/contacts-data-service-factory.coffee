@@ -52,6 +52,7 @@ ContactsDataService = ($http, $q)->
     
     $http(postRequest)
     .then (data) ->
+      ContactsDataServiceBase.patchKeyAsId data.data.name
       deferred.resolve data.data
     , (error) ->
       deferred.reject error
@@ -82,6 +83,22 @@ ContactsDataService = ($http, $q)->
     }
   
     $http(deleteRequest)
+    .then (data) ->
+      deferred.resolve data
+    , (error) ->
+      deferred.reject error
+    
+    return deferred.promise
+
+  ContactsDataServiceBase.patchKeyAsId = (key) ->
+    deferred = $q.defer()
+    patchRequest = {
+      method: 'PATCH'
+      url: url + "/" + key + jsonExtension
+      data: {id: key}
+    }
+  
+    $http(patchRequest)
     .then (data) ->
       deferred.resolve data
     , (error) ->

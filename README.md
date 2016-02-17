@@ -1,6 +1,17 @@
 # myContacts
 
-*Generated with [ng-poly](https://github.com/dustinspecker/generator-ng-poly/tree/v0.11.5) version 0.11.5*
+Allow users to create, update, read and delete a list of contacts 
+
+## Try It (Without node, gulp or bower)
+1. Clone or download the project
+2. Mount the "build" folder in your localhost
+3. Enjoy
+
+## Try It (With node, gulp and bower)
+1. Clone or download the project
+2. Run `npm install` and `bower install` while in the project root folder
+3. Run `gulp dev`
+4. Enjoy
 
 ## Setup
 1. Install [Node.js](http://nodejs.org/)

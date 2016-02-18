@@ -33,8 +33,8 @@
             td(ng-click="contactsCtrl.showDetails($index)") {{contact.personalInfo.company}}
             td(ng-click="contactsCtrl.showDetails($index)") {{contact.personalInfo.email}}
             td
-              a#actionButtons.button.tiny(href="#" ng-click="contactsCtrl.showEditForm(contact.id)") Edit
-              a#actionButtons.button.tiny.alert(href="#" ng-click="contactsCtrl.openDeleteModal(contact.id)") Delete
+              a#actionButtons.button.tiny(ng-click="contactsCtrl.showEditForm(contact.id)") Edit
+              a#actionButtons.button.tiny.alert(ng-click="contactsCtrl.openDeleteModal(contact.id)") Delete
 
           tr(ng-repeat-end ng-if="contactsCtrl.showIndexDetails == $index")
             td(colspan="4")

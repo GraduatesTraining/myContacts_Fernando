@@ -1,0 +1,14 @@
+.outer
+  .middle
+    .inner
+      #login.row
+        .large-12.columns.text-center
+          //img(src='img/logo.png', alt='logo')
+          form(name="registerInputForm")
+            input#Text1.border-radius-top(type='email' placeholder='Email' ng-model="loginCtrl.user.email" required)
+            input#Text2.no-radius(type='password' placeholder='Password' ng-model="loginCtrl.user.password" required)
+            input#Text3.no-radius(type='password' placeholder='Confirm Password' ng-model="pwdConfirm")
+            button.small.border-radius-bottom(ng-click="registerInputForm.$valid && loginCtrl.register()" 
+            ng-disabled="loginCtrl.user.password !== pwdConfirm" style='width: 100%') Register
+        .div(ng-show="loginCtrl.error")
+          span{{ loginCtrl.error.message }}

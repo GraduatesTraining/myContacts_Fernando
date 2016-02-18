@@ -8,4 +8,10 @@ angular
         url: '/login'
         templateUrl: 'login/views/login.tpl.html'
         controller: 'LoginCtrl'
-        controllerAs: 'login'
+        controllerAs: 'loginCtrl'
+    $stateProvider
+      .state 'register',
+        url: '/register'
+        templateUrl: 'login/views/register.tpl.html'
+        controller: 'LoginCtrl'
+        controllerAs: 'loginCtrl'

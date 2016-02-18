@@ -7,9 +7,9 @@
  # @description
 
 ###
-ContactsDataService = ($http, $q)->
+ContactsDataService = ($http, $q, FireBaseUrl) ->
   ContactsDataServiceBase = {}
-  url = "https://mycognizantcontacts.firebaseio.com/fersomo11/contacts"
+  url = FireBaseUrl + "fersomo11/contacts"
   jsonExtension = ".json"
   
   ContactsDataServiceBase.getContacts = ->
@@ -111,4 +111,5 @@ ContactsDataService = ($http, $q)->
 
 angular
   .module 'contacts'
-  .factory 'ContactsDataService', ContactsDataService
+  .factory 'ContactsDataService',
+  ['$http','$q','FireBaseUrl' , ContactsDataService]

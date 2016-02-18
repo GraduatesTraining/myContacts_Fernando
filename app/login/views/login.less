@@ -1,0 +1,57 @@
+.outer {
+    display: table;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.inner {
+    margin-left: auto;
+    margin-right: auto; 
+    width: 100%;
+}
+
+#login {
+  width: 30%;
+}
+
+#login input[type="email"], #login input[type="password"] {
+  margin: 0px;
+  height: 50px;
+}
+
+#login .border-radius-top {
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+  -moz-border-radius-topleft: 3px;
+  -moz-border-radius-topright: 3px;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom: 0px !important;
+}
+
+
+#login .border-radius-bottom {
+  -webkit-border-bottom-right-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -moz-border-radius-bottomright: 3px;
+  -moz-border-radius-bottomleft: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 3px;
+}
+
+#login .no-radius {
+  border-radius: 0px;
+  border-bottom: 0px !important;
+}
+
+@media all and (max-width:800px) {
+  #login {
+      width: 90%;
+    }
+}

@@ -6,7 +6,9 @@
     "angular-foundation": "~0.3.0",
     "angular-ui-router": "~0.2.10",
     "font-awesome": "~4.2.0",
-    "foundation": "~5.4.0"
+    "foundation": "~5.4.0",
+    "firebase": "*",
+    "angularfire": "*"
   },
   "devDependencies": {
     "angular-mocks": "~1.4.*"

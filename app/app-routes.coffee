@@ -3,4 +3,4 @@
 angular
   .module 'myContacts'
   .config ($urlRouterProvider) ->
-    $urlRouterProvider.otherwise '/contacts'
+    $urlRouterProvider.otherwise '/login'

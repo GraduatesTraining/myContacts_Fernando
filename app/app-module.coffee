@@ -9,6 +9,7 @@ angular
   .module 'myContacts', [
     'ui.router',
     'mm.foundation',
+    'firebase',
     'contacts',
     'login'
   ]

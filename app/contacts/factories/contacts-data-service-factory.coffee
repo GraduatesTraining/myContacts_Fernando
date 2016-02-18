@@ -7,9 +7,9 @@
  # @description
 
 ###
-ContactsDataService = ($http, $q, FireBaseUrl) ->
+ContactsDataService = ($http, $q, FireBaseUrl, $rootScope) ->
   ContactsDataServiceBase = {}
-  url = FireBaseUrl + "fersomo11/contacts"
+  url = FireBaseUrl + $rootScope.loggedInUser.uid + "/contacts"
   jsonExtension = ".json"
   
   ContactsDataServiceBase.getContacts = ->
@@ -52,8 +52,12 @@ ContactsDataService = ($http, $q, FireBaseUrl) ->
     
     $http(postRequest)
     .then (data) ->
-      ContactsDataServiceBase.patchKeyAsId data.data.name
-      deferred.resolve data.data
+      ContactsDataServiceBase.patchKeyAsId(data.data.name)
+      .then (data2) ->
+        console.log "Patching"
+        deferred.resolve data.data
+      , (error2) ->
+        console.log error2
     , (error) ->
       deferred.reject error
     
@@ -112,4 +116,4 @@ ContactsDataService = ($http, $q, FireBaseUrl) ->
 angular
   .module 'contacts'
   .factory 'ContactsDataService',
-  ['$http','$q','FireBaseUrl' , ContactsDataService]
+  ['$http','$q','FireBaseUrl','$rootScope' , ContactsDataService]

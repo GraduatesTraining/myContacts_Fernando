@@ -10,13 +10,16 @@
 class LoginCtrl
   @$inject = ['Auth', '$state']
   
-  user: {
-    email: undefined
-    password: undefined
-  }
+  class User
+    constructor: ->
+      @email= undefined
+      @password= undefined
   
+  user: new User
+
   constructor: (@Auth, @$state) ->
     @ctrlName = 'LoginCtrl'
+    @user = new User
     
   login: ->
     @Auth.$authWithPassword(@user)
@@ -32,7 +35,6 @@ class LoginCtrl
       @login()
     , (error) =>
       @error = error
-  
 
 angular
   .module('login')

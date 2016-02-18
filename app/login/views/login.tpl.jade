@@ -9,4 +9,4 @@
             input#Text2.no-radius(type='password', placeholder='Password' ng-model="loginCtrl.user.password" required)
             button.small.border-radius-bottom(ng-click="loginInputForm.$valid && loginCtrl.login()" style='width: 100%') Log In
         .div(ng-show="loginCtrl.error")
-          span{{ loginCtrl.error.message }}
+          span {{ loginCtrl.error.message }}

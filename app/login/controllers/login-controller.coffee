@@ -25,6 +25,8 @@ class LoginCtrl
     , (error) =>
       @error = error
   register: ->
+    @Auth.$unauth()
+
     @Auth.$createUser(@user)
     .then (auth) =>
       @login()

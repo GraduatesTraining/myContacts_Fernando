@@ -1,3 +1,15 @@
+.container#myContactsHeader
+  .row
+    .large-12.columns.text-center
+      .large-4.columns
+        h1 myContacts
+          i.fa.fa-users.left
+      .large-6.columns.right#userInfo(ng-controller="LoginCtrl as loginCtrl")
+        span
+          i.fa.fa-user
+          h3 {{$root.loggedInUser.password.email}}
+        button.small.alert(ng-click="loginCtrl.logout()") Log Out
+      hr
 .row
   .large-10.small-12.columns
     div(ng-show="contactsCtrl.showForm")
@@ -48,7 +60,7 @@
                     li #[b Work]: {{contact.telephone.work_phone}}
                     li #[b Mobile]: {{contact.telephone.mobile_phone}}
                     li #[b Home]: {{contact.telephone.home_phone}}
-                  div(ng-if="contact.address != undefined")
+                    div(ng-if="contact.address != undefined")
                     h5 Location Info
                     li {{contact.address.street}}
                     li {{contact.address.city}}, {{contact.address.state}} {{contact.address.zip}}

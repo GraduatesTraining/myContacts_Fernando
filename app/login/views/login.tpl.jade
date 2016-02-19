@@ -3,10 +3,13 @@
     .inner
       #login.row
         .large-12.columns.text-center
-          //img(src='img/logo.png', alt='logo')
+          h1 myContacts
+            i.fa.fa-users.left
           form(name="loginInputForm")
             input#Text1.border-radius-top(type='email', placeholder='Email' ng-model="loginCtrl.user.email" required)
             input#Text2.no-radius(type='password', placeholder='Password' ng-model="loginCtrl.user.password" required)
             button.small.border-radius-bottom(ng-click="loginInputForm.$valid && loginCtrl.login()" style='width: 100%') Log In
+          .row
+            p Still not a user, #[a(ui-sref="register") Sign up now]
         .div(ng-show="loginCtrl.error")
           span {{ loginCtrl.error.message }}

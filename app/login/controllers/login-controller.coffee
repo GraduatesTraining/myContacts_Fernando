@@ -35,6 +35,8 @@ class LoginCtrl
       @login()
     , (error) =>
       @error = error
+  logout: ->
+    @Auth.$unauth()
 
 angular
   .module('login')

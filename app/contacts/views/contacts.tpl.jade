@@ -15,7 +15,7 @@
     div(ng-show="contactsCtrl.showForm")
       contacts-form
     div(ng-hide="contactsCtrl.showForm")
-      h3 Your contacts
+      h3 Your contacts ({{contactsCtrl.all_contacts.length}})
       form
         .row.collapse.prefix-radius
           .small-1.columns
